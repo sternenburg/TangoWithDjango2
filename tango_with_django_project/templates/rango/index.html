@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html>
     <head>
         <title>Rango</title>
+        {% comment %} <!-- CSS -->
+        <link rel="stylesheet" href="{% static "css/base.css" %}" />
+        <!-- Javascript -->
+        <script src="{% static "js/jquery.js" %}"></script> {% endcomment %}
+
     </head>
     
     <body>
@@ -12,6 +19,9 @@
         </div>
         <div>
             <a href="/rango/about/">About</a><br />
+            <img src="{% static 'images/tesla.jpg' %}"
+                 width="600" height="400"
+                 alt="My Dream Car" />
         </div>
     </body>
 </html>
