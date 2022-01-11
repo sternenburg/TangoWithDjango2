@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="{% static "css/base.css" %}" />
         <!-- Javascript -->
         <script src="{% static "js/jquery.js" %}"></script> {% endcomment %}
+        
+        <!-- 下面这行不加的话，会出现 GET/favicon.ico HTTP/1.1 404错误 -->
+        <link rel="shortcut icon" href="#" />
 
     </head>
     
@@ -19,9 +22,19 @@
         </div>
         <div>
             <a href="/rango/about/">About</a><br />
+        </div><br />
+
+        <div>
+            <span>
             <img src="{% static 'images/tesla.jpg' %}"
                  width="600" height="400"
                  alt="My Dream Car" />
+            </span>
+            <span>
+            <img src="{{ MEDIA_URL }}tesla_1.jpg" 
+                 width="600" height="400"
+                 alt="My favorite car." />
+            </span>
         </div>
     </body>
 </html>
