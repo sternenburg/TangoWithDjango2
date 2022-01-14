@@ -12,8 +12,8 @@ def populate():
          'url': 'http://docs.python.org/3/tutorial/'},
         {'title': 'How to Think like a Computer Scientist',
          'url': 'http://www.greeteapress.com/thinkpython'},
-        {'title': 'Baidu',
-         'url': 'http://www.baidu.com'},
+        {'title': 'w3school',
+         'url': 'http://www.w3school.com.cn'},
     ]
     
     movie_pages = [
@@ -21,8 +21,8 @@ def populate():
          'url': 'http://v.qq.com/'},
         {'title': '爱奇艺',
          'url': 'http://www.greeteapress.com/thinkpython'},
-        {'title': 'Baidu',
-         'url': 'http://www.baidu.com'},
+        {'title': '芒果TV',
+         'url': 'http://www.mgtv.com'},
     ]
 
     other_pages = [
