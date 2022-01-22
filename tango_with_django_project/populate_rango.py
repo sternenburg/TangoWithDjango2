@@ -39,6 +39,7 @@ def populate():
          'url': 'http://www.bing.com',
          'views': 6},
     ]
+
     cats = {'Python': {'pages': python_pages,
                        'views': 128,
                        'likes':64},
@@ -48,7 +49,8 @@ def populate():
             'Other Frameworks': {'pages': other_pages,
                                  'views': 32,
                                  'likes':16}
-            }
+    }
+
     
     # Goes through the cats dictionary, then adds each c
     # and then adds all the associated pages for that category
@@ -71,7 +73,11 @@ def add_page(cat, title, url, views = 0):
     p.save()
     return p
 
+<<<<<<< HEAD
 def add_cat(name, views=0, likes=0):
+=======
+def add_cat(name, views, likes):
+>>>>>>> 4be9a6724290d30d609c089a6328ee9dd3eebb34
     c = Category.objects.get_or_create(name=name)[0]
     c.views = views
     c.likes = likes

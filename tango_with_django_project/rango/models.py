@@ -6,6 +6,7 @@ class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
+<<<<<<< HEAD
     
     # in order to make readable URLs, so called "percent-encoded"
     # eg. change "how are you" to "how-are-you"
@@ -15,6 +16,8 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
+=======
+>>>>>>> 4be9a6724290d30d609c089a6328ee9dd3eebb34
 
     class Meta:
         verbose_name_plural = "Categories"
