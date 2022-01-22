@@ -9,38 +9,53 @@ from rango.models import Category, Page
 def populate():
     python_pages = [
         {'title': 'Official Python Tutorial',
-         'url': 'http://docs.python.org/3/tutorial/'},
+         'url': 'http://docs.python.org/3/tutorial/',
+         'views': 10},
         {'title': 'How to Think like a Computer Scientist',
-         'url': 'http://www.greeteapress.com/thinkpython'},
+         'url': 'http://www.greeteapress.com/thinkpython',
+         'views': 13},
         {'title': 'w3school',
-         'url': 'http://www.w3school.com.cn'},
+         'url': 'http://www.w3school.com.cn',
+         'views':14},
     ]
     
     movie_pages = [
         {'title': '腾讯视频',
-         'url': 'http://v.qq.com/'},
+         'url': 'http://v.qq.com/',
+         'views': 20},
         {'title': '爱奇艺',
-         'url': 'http://www.greeteapress.com/thinkpython'},
+         'url': 'http://www.greeteapress.com/thinkpython',
+         'views':38},
         {'title': '芒果TV',
-         'url': 'http://www.mgtv.com'},
+         'url': 'http://www.mgtv.com',
+         'views': 19},
     ]
 
     other_pages = [
         {'title': '百度',
-         'url': 'http://www.baidu.com/'},
+         'url': 'http://www.baidu.com/',
+         'views': 1},
         {'title': 'Bing',
-         'url': 'http://www.bing.com'},
+         'url': 'http://www.bing.com',
+         'views': 6},
     ]
-    cats = {'Python': {'pages': python_pages},
-            'Movie': {'pages': movie_pages},
-            'Other Frameworks': {'pages': other_pages}}
+    cats = {'Python': {'pages': python_pages,
+                       'views': 128,
+                       'likes':64},
+            'Movie': {'pages': movie_pages,
+                      'views':64,
+                      'likes':32},
+            'Other Frameworks': {'pages': other_pages,
+                                 'views': 32,
+                                 'likes':16}
+            }
     
     # Goes through the cats dictionary, then adds each c
     # and then adds all the associated pages for that category
     for cat, cat_data in cats.items():
-        c = add_cat(cat)
+        c = add_cat(cat, cat_data['views'], cat_data['likes'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            add_page(c, p['title'], p['url'], p['views'])
             
     # Print out the categories we have added.
     for c in Category.objects.all():
@@ -56,8 +71,10 @@ def add_page(cat, title, url, views = 0):
     p.save()
     return p
 
-def add_cat(name):
+def add_cat(name, views=0, likes=0):
     c = Category.objects.get_or_create(name=name)[0]
+    c.views = views
+    c.likes = likes
     c.save()
     return c
 
