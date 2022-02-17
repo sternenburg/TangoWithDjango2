@@ -14,5 +14,7 @@ urlpatterns = [
     # show_category()
     # Instead of slugs, we can extract out other variables like strings and integers
     path('category/<slug:category_name_slug>/', 
-         views.show_category, name='show_category')
+         views.show_category, name='show_category'),
+    path('add_category/', views.add_category, name='add_category'),
+    
 ]
