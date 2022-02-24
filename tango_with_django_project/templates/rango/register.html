@@ -1,0 +1,35 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Register
+{% endblock title_block %}
+
+{% block body_block %}
+<h1>Register for Rango</h1>
+{% if registered %}
+Rango says: <stong>Thank you for registration!</strong>
+<a href="{% url 'rango:index' %}">Return to the homepage.</a><br />
+{% else %}
+Rango says: <strong>Register here!</strong><br />
+<form id="user_form" method="post" action="{% url 'rango:register' %}"
+      enctype="multipart/form-data">
+      <!-- if the user tries to upload a picture, the response from the form may
+contain binary data. This is different from text data, derived from the user’s inputs
+into the form fields. The response therefore will have to be broken into multiple
+parts to be transmitted back to the server. As such, we need to denote this with
+enctype="multipart/form-data". This tells the HTTP client (the web browser) to
+package and send the data accordingly. Otherwise, the server won’t receive all the
+data submitted by the user.-->
+
+      {% csrf_token %}
+      <!-- Display each form, the as_p template method wraps each element in the
+     form in a paragraph, ensures that each element appears on a new line. -->
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+
+      <!-- Provide a button to click to submit the form. -->
+      <input type="submit" name="submit" value="Register" />
+</form>
+{% endif %}
+{% endblock body_block %}

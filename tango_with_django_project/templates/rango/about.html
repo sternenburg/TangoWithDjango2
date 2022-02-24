@@ -1,35 +1,26 @@
-
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load static %}
 
-<html>
-    <head>
-        <title>Rango</title>
-        <link rel="shortcut icon" href="#" />
+{% block title_block %}
+    About Rango
+{% endblock title_block %}
 
-    </head>
-    
-    <body>
-        <h1>Rango says...</h1>
-        <div>
-            Here is the About page!<br />
-            This website is created by <strong>{{ your_name }}</strong>. <br />
-        </div>
-        <div>
-            <a href='/rango'>Home Page</a><br />
-        </div><br />
-
-        <div>
-            <span>
-            <img src="{% static 'images/tesla.jpg' %}"
-                 width="600" height="400"
-                 alt="My Dream Car" />
-            </span>
-            <span>
-            <img src="{{ MEDIA_URL }}tesla_1.jpg" 
-                 width="600" height="400"
-                 alt="My favorite car." />
-            </span>
-        </div>
-    </body>
-</html>
+{% block body_block %}
+<h1>Rango says...</h1>
+<div>
+    Here is the About page!<br />
+    This website is created by <strong>{{ your_name }}</strong>. <br />
+</div>
+<div>
+    <span>
+    <img src="{% static 'images/tesla.jpg' %}"
+            width="600" height="400"
+            alt="My Dream Car" />
+    </span>
+    <span>
+    <img src="{{ MEDIA_URL }}tesla_1.jpg" 
+            width="600" height="400"
+            alt="My favorite car." />
+    </span>
+</div>
+{% endblock body_block %}
