@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+{% load rango_template_tags %}
+
+<html>
+    <head>
+        <title>
+            Rango - 
+            {% block title_block %}
+                How to Tango with Django!
+            {% endblock %}
+        </title>
+        {% comment %} 
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static "css/base.css" %}" />
+        <!-- Javascript -->
+        <script src="{% static "js/jquery.js" %}"></script> 
+        {% endcomment %}
+        
+        <!-- 浏览器左上角的小图标 -->
+        
+        <link rel="shortcut icon" href="{% static 'images/tesla.ico' %}" />
+
+    </head>
+    
+    <body>
+        <div>
+        {% block body_block %}
+            This is body_block's default content.
+        {% endblock %}
+        </div>
+        <div>
+            {% block sidebar_block %}
+                {% get_category_list category %}
+            {% endblock sidebar_block %}
+
+        <hr />
+        <div>
+            <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'rango:restricted' %}">Restricted Page</a></li>
+                {% comment %} When the user logs out, it will redirect them straight to the Rango index page.
+                If we exclude it, then they will be directed to the logout page that we created earlier. {% endcomment %}
+                <li><a href="{% url 'auth_logout' %}?next={% url 'rango:index' %}">Logout</a></li>
+                <li><a href="{% url 'rango:add_category' %}">Add a New Category</a></li>
+                <li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
+            {% else %}
+                <li><a href="{% url 'registration_register' %}">Sign Up</a></li>
+                <li><a href="{% url 'auth_login' %}">Login</a></li>
+            {% endif %}
+                <li><a href="{% url 'rango:about' %}">About</a></li>
+                <li><a href="{% url 'rango:index' %}">Index</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

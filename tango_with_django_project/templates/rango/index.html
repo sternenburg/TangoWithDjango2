@@ -2,43 +2,69 @@
 {% load static %}
 
 {% block body_block %}    
-    <h1>Rango says...</h1>
-    <div>
-        {% if user.is_authenticated %}
-            Hi, {{ user.username }}!
-        {% else %}
-            Hey there partner! <br />
-        {% endif %}
+    <div class="jumbotron p-4">
+    {% comment %} The class p-4 controls the spacing around the jumbotron. Try changing the padding to be p-6 or p-1 to
+see what happens! You can also control the space of the top, bottom, left and right
+by specifically setting pt, pb, pr and pl instead of just p. {% endcomment %}
+        <div class="container">
+            <h1 class="jumbotron-heading">Rango says...</h1>
+            <div>
+                <h2 class="h2">
+                    {% if user.is_authenticated %}
+                    Hi, {{ user.username }}!
+                    {% else %}
+                    Hey there partner! <br />
+                    {% endif %}
+                </h2>
+            <strong>{{ boldmessage }}</strong> 
+            </div>
+        </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <h2>Most Likes Categories</h2>
+                        <p class="card-text">
+                        {% if categories %}
+                        <ul>
+                        {% for category in categories %}
+                            <li>
+                            <a href = "{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                        {% else %}
+                        <strong>There are no categories present. </strong>
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-    <div>
-    <h2>Most Likes Categories</h2>
-    {% if categories %}
-        <ul>
-        {% for category in categories %}
-            <li>
-                <a href = "{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no categories present. </strong>
-    {% endif %}
-    </div>
-
-    <div>
-    <h2>Most Viewed Pages</h2>
-    {% if pages %}
-        <ul>
-        {% for page in pages %}
-        <li>
-            <a href = "{{ page.url }}">{{ page.title }}</a>
-        </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no pages present. </strong>
-    {% endif %}
+            <div class="col-md-6">
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <h2>Most Viewed Pages</h2>
+                        <p class="card-text">
+                        {% if pages %}
+                            <ul>
+                            {% for page in pages %}
+                            <li>
+                                <a href = "{{ page.url }}">{{ page.title }}</a>
+                            </li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <strong>There are no pages present. </strong>
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 
     <div>
