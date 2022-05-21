@@ -6,10 +6,14 @@
 {% endblock title_block %}
 
 {% block body_block %}
-<h1>Rango says...</h1>
-<div>
-    Here is the About page!<br />
-    This website is created by <strong>{{ your_name }}</strong>. <br />
+<div class="jumbotron p-4">
+    <div class = "container">
+        <h1 class="jumbotron-heading">Rango says...</h1>
+        <div>
+            Here is the About page!<br />
+            This website is created by <strong>{{ your_name }}</strong>. <br />
+        </div>
+    </div>
 </div>
 <div>
     <span>
@@ -17,10 +21,10 @@
             width="600" height="400"
             alt="My Dream Car" />
     </span>
-    <span>
+    {% comment %} <span>
     <img src="{{ MEDIA_URL }}tesla_1.jpg" 
             width="600" height="400"
             alt="My favorite car." />
-    </span>
+    </span> {% endcomment %}
 </div>
 {% endblock body_block %}

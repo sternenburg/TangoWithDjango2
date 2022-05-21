@@ -67,17 +67,18 @@ by specifically setting pt, pb, pr and pl instead of just p. {% endcomment %}
         </div>
     </div>
 
+    <br />
     <div>
         <span>
         <img src="{% static 'images/tesla.jpg' %}"
                 width="600" height="400"
                 alt="My Dream Car" />
         </span>
-        <span>
+        {% comment %} <span>
         <img src="{{ MEDIA_URL }}tesla_1.jpg" 
                 width="600" height="400"
                 alt="My favorite car." />
-        </span>
+        </span> {% endcomment %}
     </div>
 </body>
 {% endblock body_block %}
